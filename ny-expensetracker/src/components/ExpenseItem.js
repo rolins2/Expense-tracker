@@ -1,7 +1,12 @@
+import "./ExpenseItem.css";
 function ExpenseItem() {
   return (
-    <div>
-      <p> This is where the expense item will be created</p>
+    <div className="expenseitem">
+      <div>Date</div>
+      <div className="expenseitem__description">
+        <h2> Title </h2>
+        <div className="expenseitem__price"> Anount </div>
+      </div>
     </div>
   );
 }
