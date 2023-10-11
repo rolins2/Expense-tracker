@@ -1,5 +1,5 @@
 import { useState } from "react";
-function ExpenseForm() {
+function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -14,14 +14,15 @@ function ExpenseForm() {
   }
   function submitHandler(event) {
     event.preventDefault();
-    console.log(
-      "The entered title is " +
-        enteredTitle +
-        "\nThe entered amount is " +
-        enteredAmount +
-        "\nThe entered date is " +
-        enteredDate
-    );
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    props.onSaveExpemseData(expenseData);
+    setEnteredTitle("");
+    setEnteredDate("");
+    setEnteredAmount("");
   }
   return (
     <div>
@@ -29,15 +30,27 @@ function ExpenseForm() {
         <div>
           <div>
             <label>Title </label>
-            <input type="text" onChange={titleChangeHandler}></input>
+            <input
+              type="text"
+              value={enteredTitle}
+              onChange={titleChangeHandler}
+            ></input>
           </div>
           <div>
             <label>Amount</label>
-            <input type="text" onChange={amountChangeHandler} />
+            <input
+              type="text"
+              value={enteredAmount}
+              onChange={amountChangeHandler}
+            />
           </div>
           <div>
             <label>Date</label>
-            <input type="date" onChange={dateChangeHandler} />
+            <input
+              type="date"
+              value={enteredDate}
+              onChange={dateChangeHandler}
+            />
           </div>
           <div>
             <button type="submit">Submit</button>
