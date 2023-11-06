@@ -17,7 +17,6 @@ function ExpenseItem(props) {
         <h2> {ttl} </h2>
         <div className="expense-item__price ">Rs: {props.amount} </div>
       </div>
-      <button onClick={clickHandler}> Hello Button </button>
     </Card>
   );
 }
